@@ -6,6 +6,7 @@ const DELETE_TODO = "todos/DELETE_TODO";
 const TOGGLE_STATUS_TODO = "todos/TOGGLE_STATUS_TODO";
 
 // action creator : action value를 return하는 함수
+// 새로운 todo 객체를 추가하는 함수
 export const addTodo = (title, content) => {
   return {
     type: ADD_TODO,
@@ -18,6 +19,7 @@ export const addTodo = (title, content) => {
   };
 };
 
+// 특정 todo를 삭제하는 함수
 export const deleteTodo = (todos, id) => {
   const newTodos = todos.filter((todo) => todo.id !== id);
   return {
@@ -26,6 +28,7 @@ export const deleteTodo = (todos, id) => {
   };
 };
 
+// todo의 상태변경을 업데이트 하는 함수
 export const toggleStatusTodo = (todos, id) => {
   const updateTodos = todos.map((todo) => {
     if (todo.id === id) {
@@ -44,20 +47,20 @@ export const toggleStatusTodo = (todos, id) => {
 const initialState = [
   {
     id: uuid(),
-    title: "리액트 강의보기",
-    content: "챕터 1부터 챕터 12까지 학습",
+    title: "리액트 공부하기",
+    content: "리액트 심화 강의 듣기",
     isDone: false,
   },
   {
     id: uuid(),
-    title: "점심 먹기",
-    content: "점심 뭐먹지..?",
+    title: "TIL 작성하기",
+    content: "오늘 공부한 내용에 대해 작성하기",
     isDone: true,
   },
   {
     id: uuid(),
-    title: "마트 가기",
-    content: "우유와 시리얼 사오기",
+    title: "알고리즘 공부하기",
+    content: "알고리즘 5문제 이상 풀기",
     isDone: false,
   },
 ];
