@@ -40,12 +40,15 @@ const ReturnHomeBtn = styled.p`
 `;
 
 function Detail() {
+  // 여기에서 store에 접근하여, userSelector를 사용하여 todos 값 가져오기
   const todos = useSelector((state) => {
     return state.todos;
   });
 
+  // 파라미터 값을 알려주는 useParams 훅
   const params = useParams();
 
+  // 선택된 to do의 id와 해당 파라미터 id가 같다면 선택된 객체를 반환
   const foundToDo = todos.find((todo) => {
     return todo.id === params.id;
   });
