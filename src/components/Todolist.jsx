@@ -6,13 +6,12 @@ import bgImg from "../img/bgImg.jpg";
 import { Link } from "react-router-dom";
 
 function Todolist({ ListisDone }) {
-  // 여기에서 store에 접근하여, todos의 값을 읽어보고 싶다 !
-  // userSelector라는 훅
+  // 여기에서 store에 접근하여, userSelector를 사용하여 todos 값 가져오기
   const todos = useSelector((state) => {
     return state.todos;
   });
 
-  // dispatch를 가져와보자.
+  // dispatch 가져오기
   const dispatch = useDispatch();
 
   const ToDoListContainer = styled.div`

@@ -45,7 +45,7 @@ function Input() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  // dispatch를 가져와보자.
+  // dispatch를 가져오기
   const dispatch = useDispatch();
 
   const onChangeTitle = (event) => setTitle(event.target.value);
@@ -56,6 +56,7 @@ function Input() {
       <InputForm
         onSubmit={(event) => {
           event.preventDefault();
+          // input에 대한 validation check
           if (title === "") {
             alert("제목을 입력해 주세요.");
           } else if (content === "") {
