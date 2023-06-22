@@ -1,0 +1,15 @@
+redux : 리덕스 관련 코드를 모두 몰아넣음
+
+config : 리덕스 설정 관련 파일 전부
+configStore : 중앙 state 관리소 -> 설정 코드 (.js)
+modules : state의 그룹! todos.js
+components : 컴포넌트들의 모음
+
+
+
+
+1. 페이지(우리는 원래 단일페이지) 컴포넌트 작성 -> 다중 페이지
+2. Router.js 파일 생성. router를 구성하는 설정 코드 작성
+    (ex : rdeux 할 때도 설정 파일을 만들어서 주입했죠)
+3. App.jsx import 하고 (2번) 적용 : 주입
+4. 페이지 이동 테스트
