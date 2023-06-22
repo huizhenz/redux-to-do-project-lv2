@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo, toggleStatusTodo } from "../redux/modules/todos";
 import bgImg from "../img/bgImg.jpg";
+import { Link } from "react-router-dom";
 
 function Todolist({ ListisDone }) {
   // 여기에서 store에 접근하여, todos의 값을 읽어보고 싶다 !
@@ -16,7 +17,7 @@ function Todolist({ ListisDone }) {
 
   const ToDoListContainer = styled.div`
     background-image: url(${bgImg});
-    background-size: 1200px 1050px;
+    background-size: 1200px 1000px;
     background-repeat: repeat-y;
   `;
 
@@ -34,22 +35,22 @@ function Todolist({ ListisDone }) {
   const ToDoListCard = styled.div`
     position: relative;
     width: 240px;
-    background-color: rgb(244, 244, 138);
+    height: 160px;
+    background-color: ${(props) => props.backgroudColor};
     box-shadow: 3px 4px 7px gray;
     text-align: center;
     margin: 15px;
     padding: 15px;
   `;
 
-  const TodoTitle = styled.h2`
-    margin: 13px;
-    cursor: pointer;
+  const ToDoTitle = styled.h2`
+    margin: 15px;
   `;
 
   const PinEmoticon = styled.p`
     position: absolute;
-    top: -10%;
-    left: 5%;
+    top: -9%;
+    left: 3%;
     font-size: 25px;
   `;
 
@@ -71,8 +72,9 @@ function Todolist({ ListisDone }) {
   const ToggleBtn = styled.button`
     width: 70px;
     background-color: rgba(255, 255, 255, 0.431);
-    border: 2px solid rgb(137, 204, 118);
+    border: 2px solid rgb(107, 125, 255);
     border-radius: 15px;
+    font-weight: bold;
     padding: 5px;
     cursor: pointer;
 
@@ -93,9 +95,16 @@ function Todolist({ ListisDone }) {
               .filter((item) => item.isDone === ListisDone)
               .map((todo) => {
                 return (
-                  <ToDoListCard key={todo.id}>
-                    <PinEmoticon>📌</PinEmoticon>
-                    <TodoTitle>{todo.title}</TodoTitle> <p>{todo.content}</p>
+                  <ToDoListCard
+                    backgroudColor={
+                      !ListisDone ? "rgb(245, 245, 163)" : "rgb(255, 222, 230)"
+                    }
+                  >
+                    <Link to={`/detail/${todo.id}`}>
+                      <PinEmoticon>➕</PinEmoticon>
+                    </Link>
+                    <ToDoTitle>{todo.title}</ToDoTitle>
+                    <p>{todo.content}</p>
                     <DeleteBtn
                       onClick={() => {
                         dispatch(deleteTodo(todos, todo.id));
